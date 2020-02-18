@@ -11,4 +11,5 @@ class ShortcutInline(admin.TabularInline):
 
 @admin.register(FullURL)
 class LinkAdmin(admin.ModelAdmin):
+    list_display = ('url', 'display_num_of_shortcuts')
     inlines = (ShortcutInline,)
