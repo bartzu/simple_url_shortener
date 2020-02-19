@@ -2,10 +2,37 @@
 
 
 {% block content %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
     <form action="." method="post" novalidate>
+        {{ form.non_field_errors }}
         {% csrf_token %}
-        {{ form.as_p }}
+
+        {{ form.full_url.errors }}
+        <div class="field-wrapper">    
+            {{ form.full_url.label_tag }}
+            {{ form.full_url }}
+        </div>
+        
+        <p id="additional-info">If you want you can propose your own shortcut. If not just leave the field empty.</p>
+        {{ form.proposed_shortcut.errors }}
+        <div class="field-wrapper">
+            {{ form.proposed_shortcut.label_tag }}
+            {{ form.proposed_shortcut }}
+        </div>
+        <p class="help-text">
+            {{ form.proposed_shortcut.help_text }}
+        </p>
         
         <input class="btn" type="submit" value="Shorten!" />
     </form>
 {% endblock content %}
+
+
+

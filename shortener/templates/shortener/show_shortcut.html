@@ -1,0 +1,13 @@
+{% extends 'shortener/base.html' %}
+
+
+{% block content %}
+    <div>
+        created shortcut to: <p>{{ full_url }}</p>
+        <a href="{{ full_url }}">{{ created_link }}</a>
+    </div>
+
+{% endblock content %}
+
+
+
