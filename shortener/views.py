@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 from .utils import url_within_domain, random_shortcut_value
@@ -62,4 +62,4 @@ def show_shortcut(request, shortcut_value):
 
 def redirect_to_url(request, shortcut):
     shortcut = get_object_or_404(Shortcut, value=shortcut)
-    return HttpResponse(f"Redirecting to: {shortcut.full_url.url}")
+    return HttpResponseRedirect(shortcut.full_url.url)
