@@ -3,7 +3,6 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 
-
 from .utils import url_within_domain, random_shortcut_value
 from .models import FullURL, Shortcut
 from .forms import FullURLForm
